@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pani Puri Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="game-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Street Food Challenge</p>
+          <h1>Pani Puri Game</h1>
+        </div>
+        <button id="restartBtn" class="ghost-btn">Restart</button>
+      </header>
+
+      <section class="hud">
+        <div class="hud-card">
+          <span>Score</span>
+          <strong id="score">0</strong>
+        </div>
+        <div class="hud-card">
+          <span>Combo</span>
+          <strong id="combo">x1</strong>
+        </div>
+        <div class="hud-card timer-wrap">
+          <span>Time</span>
+          <strong id="timer">60</strong>
+        </div>
+        <div class="hud-card">
+          <span>Lives</span>
+          <strong id="lives">3</strong>
+        </div>
+      </section>
+
+      <main class="game-layout">
+        <aside class="panel customer-panel">
+          <div class="panel-header">
+            <h2>Customer Order</h2>
+          </div>
+          <div id="customerCard" class="customer-card">
+            <div class="avatar">😄</div>
+            <h3>Waiting for order...</h3>
+            <div id="orderList" class="order-list"></div>
+          </div>
+          <div class="action-row">
+            <button id="serveBtn" class="primary-btn">Serve Pani Puri</button>
+            <button id="clearBtn" class="secondary-btn">Reset Plate</button>
+          </div>
+        </aside>
+
+        <section class="panel play-panel">
+          <div class="plate-wrap">
+            <div class="plate-header">
+              <h2>Your Pani Puri Plate</h2>
+            </div>
+            <div id="plate" class="plate" aria-live="polite">
+              <div class="plate-empty">No ingredients selected yet.</div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel ingredients-panel">
+          <div class="panel-header">
+            <h2>Ingredient Station</h2>
+          </div>
+          <div id="ingredients" class="ingredients"></div>
+        </aside>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
