@@ -5,6 +5,7 @@
 :root {
   --bg-1: #fff7d9;
   --bg-2: #ffd6a5;
+  --bg-3: #ffb26b;
   --panel: rgba(255, 255, 255, 0.78);
   --panel-border: rgba(117, 71, 30, 0.18);
   --sun: #ffbf69;
@@ -17,14 +18,46 @@
   --ripe: #f79e4b;
   --text: #3a291f;
   --shadow: rgba(101, 54, 18, 0.18);
+  --danger: #d94c53;
+  --success: #2bb673;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Fredoka", sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.8), transparent 18%),
+    linear-gradient(180deg, #fffef7 0%, var(--bg-1) 28%, var(--bg-2) 68%, #ffc88d 100%);
+  color: var(--text);
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
-  font-family: "Fredoka", sans-serif;
-  background: radial-gradient(circle at top, #fffef4 0%, var(--bg-1) 35%, var(--bg-2) 100%);
-  color: var(--text);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  filter: blur(18px);
+  z-index: 0;
+}
+
+body::before {
+  top: -60px;
+  right: -50px;
+}
+
+body::after {
+  bottom: -90px;
+  left: -40px;
 }
 
 button {
@@ -32,6 +65,8 @@ button {
 }
 
 .game-shell {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
   padding: 28px 20px 40px;
@@ -45,8 +80,14 @@ button {
   margin-bottom: 20px;
 }
 
+.title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .eyebrow {
-  margin: 0 0 6px;
+  margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.7rem;
@@ -58,6 +99,12 @@ h1 {
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.1;
   color: #2e190d;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .ghost-btn,
@@ -144,7 +191,7 @@ h1 {
 }
 
 .customer-card {
-  background: linear-gradient(180deg, rgba(255, 191, 105, 0.15), rgba(255, 255, 255, 0.7));
+  background: linear-gradient(180deg, rgba(255, 191, 105, 0.18), rgba(255, 255, 255, 0.7));
   border-radius: 18px;
   padding: 20px 16px;
   border: 1px solid rgba(127, 88, 57, 0.15);
@@ -160,6 +207,7 @@ h1 {
   background: linear-gradient(135deg, #ffe9a8, #ffb15e);
   font-size: 2.3rem;
   margin-bottom: 12px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.7);
 }
 
 .customer-card h3 {
@@ -191,6 +239,21 @@ h1 {
   height: 12px;
   border-radius: 50%;
   display: inline-block;
+}
+
+.placeholder-list {
+  align-items: center;
+  min-height: 66px;
+}
+
+.placeholder-order {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(58, 41, 31, 0.2);
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  color: rgba(58, 41, 31, 0.7);
+  font-weight: 600;
 }
 
 .action-row {
@@ -233,6 +296,7 @@ h1 {
   border: 2px dashed rgba(122, 83, 59, 0.35);
   border-radius: 26px;
   overflow: hidden;
+  box-shadow: inset 0 6px 18px rgba(121, 78, 47, 0.08);
 }
 
 .plate::before {
@@ -270,6 +334,7 @@ h1 {
   height: 70px;
   border-radius: 50%;
   font-size: 1.7rem;
+  background: rgba(255,255,255,0.35);
   border: 2px solid rgba(58, 41, 31, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 8px 18px rgba(90, 58, 35, 0.1);
 }
@@ -323,6 +388,67 @@ h1 {
   font-size: 1.1rem;
 }
 
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(37, 22, 14, 0.48);
+  backdrop-filter: blur(4px);
+  display: grid;
+  place-items: center;
+  z-index: 50;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.modal {
+  width: min(92vw, 480px);
+  background: linear-gradient(180deg, #fffdf9 0%, #fff3d4 100%);
+  border: 1px solid rgba(79, 56, 36, 0.1);
+  border-radius: 26px;
+  box-shadow: 0 24px 48px rgba(50, 34, 22, 0.3);
+  padding: 28px 24px 22px;
+  text-align: center;
+}
+
+.mod-emoji {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.modal h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  color: #2d1c12;
+}
+
+.modal p,
+.modal li {
+  color: rgba(58, 41, 31, 0.85);
+  font-size: 1.04rem;
+}
+
+.modal ul {
+  padding-left: 18px;
+  text-align: left;
+  margin: 14px 0 18px;
+  line-height: 1.6;
+}
+
+.modal-btn {
+  width: 100%;
+  margin-top: 8px;
+  font-size: 1rem;
+}
+
+.final-score {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--deep-spice);
+  margin: 10px 0 18px;
+}
+
 .toast {
   position: fixed;
   left: 50%;
@@ -361,6 +487,11 @@ h1 {
   .topbar {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .action-row {

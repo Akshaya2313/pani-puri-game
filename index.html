@@ -12,11 +12,14 @@
   <body>
     <div class="game-shell">
       <header class="topbar">
-        <div>
+        <div class="title-wrap">
           <p class="eyebrow">Street Food Challenge</p>
           <h1>Pani Puri Game</h1>
         </div>
-        <button id="restartBtn" class="ghost-btn">Restart</button>
+        <div class="header-actions">
+          <button id="soundBtn" class="ghost-btn" aria-label="Toggle sound">🔊 Sound On</button>
+          <button id="restartBtn" class="ghost-btn">Restart</button>
+        </div>
       </header>
 
       <section class="hud">
@@ -45,8 +48,10 @@
           </div>
           <div id="customerCard" class="customer-card">
             <div class="avatar">😄</div>
-            <h3>Waiting for order...</h3>
-            <div id="orderList" class="order-list"></div>
+            <h3>Ready to start?</h3>
+            <div class="order-list placeholder-list">
+              <span class="placeholder-order">Press start to begin</span>
+            </div>
           </div>
           <div class="action-row">
             <button id="serveBtn" class="primary-btn">Serve Pani Puri</button>
@@ -72,6 +77,30 @@
           <div id="ingredients" class="ingredients"></div>
         </aside>
       </main>
+    </div>
+
+    <div id="startOverlay" class="overlay visible">
+      <div class="modal start-modal">
+        <div class="mod-emoji">🥟</div>
+        <h2>Welcome to the Pani Puri Rush</h2>
+        <p>Serve each customer exactly the ingredients they ask for before the clock runs out.</p>
+        <ul>
+          <li>Match the customer’s shell, filling, water, and topping.</li>
+          <li>Every correct order boosts your combo and score.</li>
+          <li>Wrong orders cost a life and reduce time.</li>
+        </ul>
+        <button id="startBtn" class="primary-btn modal-btn">Start Game</button>
+      </div>
+    </div>
+
+    <div id="gameOverOverlay" class="overlay hidden">
+      <div class="modal gameover-modal">
+        <div class="mod-emoji">🏁</div>
+        <h2>Game Over</h2>
+        <p>Your final score:</p>
+        <div id="finalScore" class="final-score">0</div>
+        <button id="playAgainBtn" class="primary-btn modal-btn">Play Again</button>
+      </div>
     </div>
 
     <div id="toast" class="toast" aria-live="polite"></div>
