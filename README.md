@@ -2,15 +2,15 @@
 
 A colorful browser arcade game inspired by the Indian street-food favorite.
 
-## New upgrades
+## Latest upgrades
 
-- Customer personalities with animated speech bubbles
-- Progressive levels that increase the challenge and reward combos
-- Persistent high score saved in the browser with `localStorage`
-- Background music and sound-effect controls using the Web Audio API
-- Fullscreen arcade mode
-- Responsive mobile layout with touch-friendly controls
-- Animated plate ingredients, level progress, start screen, and game-over screen
+- Animated splash screen with a premium arcade intro
+- Boss-wave mode starting at higher levels
+- Customer personality cards and speech bubbles
+- Level progression and smoother difficulty curve
+- Persistent best score using `localStorage`
+- Music and sound toggles plus fullscreen support
+- Responsive mobile layout and polished plate animations
 
 ## Run locally
 
@@ -18,4 +18,10 @@ A colorful browser arcade game inspired by the Indian street-food favorite.
 python3 -m http.server 8000
 ```
 
-Open `http://localhost:8000` in your browser. No build step or dependencies are required.
+Then open:
+
+```text
+http://localhost:8000
+```
+
+No dependencies or build step are required.

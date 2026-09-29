@@ -37,12 +37,16 @@
 
       <main class="game-layout">
         <aside class="panel customer-panel">
-          <div class="panel-header"><h2>Customer Order</h2><span id="customerNumber" class="order-number">#1</span></div>
+          <div class="panel-header">
+            <h2>Customer Order</h2>
+            <span id="customerNumber" class="order-number">#1</span>
+          </div>
           <div id="customerCard" class="customer-card">
-            <div class="avatar">😄</div><h3>Ready to start?</h3>
+            <div class="avatar">😄</div>
+            <h3>Ready to start?</h3>
             <div class="order-list placeholder-list"><span class="placeholder-order">Press start to begin</span></div>
           </div>
-          <div class="speech-bubble" id="speechBubble">I am hungry for pani puri!</div>
+          <div id="speechBubble" class="speech-bubble">I am hungry for pani puri!</div>
           <div class="action-row">
             <button id="serveBtn" class="primary-btn">Serve Pani Puri</button>
             <button id="clearBtn" class="secondary-btn">Reset Plate</button>
@@ -50,26 +54,56 @@
         </aside>
 
         <section class="panel play-panel">
-          <div class="plate-wrap"><div class="plate-header"><h2>Your Pani Puri Plate</h2></div>
-            <div id="plate" class="plate" aria-live="polite"><div class="plate-empty">No ingredients selected yet.</div></div>
+          <div class="plate-wrap">
+            <div class="plate-header"><h2>Your Pani Puri Plate</h2></div>
+            <div id="plate" class="plate" aria-live="polite">
+              <div class="plate-empty">No ingredients selected yet.</div>
+            </div>
           </div>
         </section>
 
-        <aside class="panel ingredients-panel"><div class="panel-header"><h2>Ingredient Station</h2></div><div id="ingredients" class="ingredients"></div></aside>
+        <aside class="panel ingredients-panel">
+          <div class="panel-header"><h2>Ingredient Station</h2></div>
+          <div id="ingredients" class="ingredients"></div>
+        </aside>
       </main>
     </div>
 
-    <div id="startOverlay" class="overlay visible"><div class="modal start-modal">
-      <div class="mod-emoji">🥟</div><h2>Welcome to the Pani Puri Rush</h2>
-      <p>Serve hungry customers, unlock new levels, and beat your high score!</p>
-      <ul><li>Match the shell, filling, water, and topping.</li><li>Build combos for bigger scores.</li><li>Wrong orders cost a life.</li></ul>
-      <button id="startBtn" class="primary-btn modal-btn">Start Game</button>
-    </div></div>
+    <div id="splashOverlay" class="overlay visible splash-overlay">
+      <div class="splash-card animated">
+        <div class="splash-badge">Street Food Arcade</div>
+        <div class="splash-emoji">🥟</div>
+        <h2>Pani Puri Rush</h2>
+        <p>Serving the city, one plate at a time.</p>
+        <button id="continueBtn" class="primary-btn modal-btn">Play Now</button>
+      </div>
+    </div>
 
-    <div id="gameOverOverlay" class="overlay hidden"><div class="modal gameover-modal">
-      <div class="mod-emoji">🏁</div><h2>Game Over</h2><p>Your final score:</p><div id="finalScore" class="final-score">0</div>
-      <p id="newBestMessage" class="new-best hidden">🏆 New high score!</p><button id="playAgainBtn" class="primary-btn modal-btn">Play Again</button>
-    </div></div>
+    <div id="startOverlay" class="overlay hidden">
+      <div class="modal start-modal">
+        <div class="mod-emoji">🥟</div>
+        <h2>Welcome to the Pani Puri Rush</h2>
+        <p>Serve hungry customers, unlock new levels, and beat your high score!</p>
+        <ul>
+          <li>Match the shell, filling, water, and topping.</li>
+          <li>Build combos for bigger scores.</li>
+          <li>Wrong orders cost a life.</li>
+        </ul>
+        <button id="startBtn" class="primary-btn modal-btn">Start Game</button>
+      </div>
+    </div>
+
+    <div id="gameOverOverlay" class="overlay hidden">
+      <div class="modal gameover-modal">
+        <div class="mod-emoji">🏁</div>
+        <h2>Game Over</h2>
+        <p>Your final score:</p>
+        <div id="finalScore" class="final-score">0</div>
+        <p id="newBestMessage" class="new-best hidden">🏆 New high score!</p>
+        <button id="playAgainBtn" class="primary-btn modal-btn">Play Again</button>
+      </div>
+    </div>
+
     <div id="toast" class="toast" aria-live="polite"></div>
     <script src="script.js"></script>
   </body>
