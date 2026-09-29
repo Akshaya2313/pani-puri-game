@@ -2,15 +2,18 @@
 
 A colorful browser arcade game inspired by the Indian street-food favorite.
 
-## Latest upgrades
+## Included upgrades
 
-- Animated splash screen with a premium arcade intro
-- Boss-wave mode starting at higher levels
-- Customer personality cards and speech bubbles
-- Level progression and smoother difficulty curve
-- Persistent best score using `localStorage`
-- Music and sound toggles plus fullscreen support
-- Responsive mobile layout and polished plate animations
+- Animated splash intro screen
+- Boss-wave mode at higher levels
+- Customer personalities and speech bubbles
+- Local leaderboard (top 5 scores) saved in `localStorage`
+- Particle burst effects for perfect serves
+- Pause/resume menu
+- Music and sound toggles
+- Fullscreen mode support
+- Installable PWA-style setup via manifest and app icon
+- Responsive mobile-ready UI
 
 ## Run locally
 

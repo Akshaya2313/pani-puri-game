@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f79e4b" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
     <title>Pani Puri Game</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,6 +23,7 @@
           <button id="soundBtn" class="ghost-btn" aria-label="Toggle sound">🔊 Sound On</button>
           <button id="musicBtn" class="ghost-btn" aria-label="Toggle music">🎵 Music On</button>
           <button id="fullscreenBtn" class="ghost-btn" aria-label="Toggle fullscreen">⛶ Fullscreen</button>
+          <button id="pauseBtn" class="ghost-btn" aria-label="Pause game">⏸ Pause</button>
           <button id="restartBtn" class="ghost-btn">Restart</button>
         </div>
       </header>
@@ -89,7 +93,23 @@
           <li>Build combos for bigger scores.</li>
           <li>Wrong orders cost a life.</li>
         </ul>
+        <div class="leaderboard-box">
+          <h3>Top Scores</h3>
+          <ol id="leaderboardList" class="leaderboard-list"></ol>
+        </div>
         <button id="startBtn" class="primary-btn modal-btn">Start Game</button>
+      </div>
+    </div>
+
+    <div id="pauseOverlay" class="overlay hidden">
+      <div class="modal pause-modal">
+        <div class="mod-emoji">⏸</div>
+        <h2>Game Paused</h2>
+        <p>Take a breather and dive back in when ready.</p>
+        <div class="pause-actions">
+          <button id="resumeBtn" class="primary-btn modal-btn">Resume</button>
+          <button id="pauseRestartBtn" class="secondary-btn modal-btn secondary-modal-btn">Restart</button>
+        </div>
       </div>
     </div>
 
@@ -100,6 +120,10 @@
         <p>Your final score:</p>
         <div id="finalScore" class="final-score">0</div>
         <p id="newBestMessage" class="new-best hidden">🏆 New high score!</p>
+        <div class="leaderboard-box compact">
+          <h3>Top Scores</h3>
+          <ol id="gameOverLeaderboard" class="leaderboard-list"></ol>
+        </div>
         <button id="playAgainBtn" class="primary-btn modal-btn">Play Again</button>
       </div>
     </div>
