@@ -32,7 +32,7 @@
       background: radial-gradient(circle, #fff4b8 0 45%, #ffb34f 72%, #ef6b5d 100%);
       box-shadow: 0 0 0 5px #fff8, 0 0 26px #f28a2e99;
       font-size: 3.2rem;
-      animation: boss-character-arrive .85s cubic-bezier(.2,1.7,.45,1) both, boss-character-idle 1.8s 0.9s ease-in-out infinite;
+      animation: boss-character-arrive .85s cubic-bezier(.2,1.7,.45,1) both, boss-character-idle 1.8s .9s ease-in-out infinite;
     }
     #customerCard.boss-enter { animation: boss-card-arrive .8s cubic-bezier(.2,1.4,.4,1) both; }
     #customerCard.boss-customer .order-chip { animation: boss-order-pop .45s both; }
@@ -50,14 +50,14 @@
   `;
   document.head.appendChild(styles);
 
-  if (typeof window.renderCustomer !== 'function') return;
-  const renderRegularCustomer = window.renderCustomer;
-  window.renderCustomer = function () {
-    renderRegularCustomer();
+  // state is a top-level lexical const in script.js, so detect boss mode from
+  // the visible order label rather than trying to read window.state.
+  const decorateCustomer = () => {
     const card = document.getElementById('customerCard');
     const bubble = document.getElementById('speechBubble');
-    if (!card || !window.state) return;
-    const isBoss = window.state.level >= 3;
+    const number = document.getElementById('customerNumber');
+    if (!card || !number) return;
+    const isBoss = number.textContent.startsWith('Boss Wave');
     card.classList.toggle('boss-customer', isBoss);
     card.classList.toggle('boss-enter', isBoss);
     const avatar = card.querySelector('.avatar');
@@ -68,4 +68,8 @@
     }
     if (isBoss) window.setTimeout(() => card.classList.remove('boss-enter'), 850);
   };
+
+  const card = document.getElementById('customerCard');
+  if (card) new MutationObserver(decorateCustomer).observe(card, { childList: true });
+  window.addEventListener('DOMContentLoaded', decorateCustomer);
 })();
